@@ -2,15 +2,44 @@
 <html>
     <head>
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.8.0.min.js"></script>
+        <style>
+            #map {
+              width: 960px;
+              height: 500px;
+            }
+        </style>
     </head>
     <body>
         <p>First Paragraph!</p>
         <p>Second Paragraph!</p>
         <p>Third Paragraph!</p>
         <p>Fourth Paragraph!</p>
+        <div id="map"></div>
 
+        <script>
+            var paragraphs = document.getElementsByTagName("p");
+            for (var i = 0; i < paragraphs.length; i++) {
+              var paragraph = paragraphs.item(i);
+              paragraph.style.setProperty("color", "yellow", null);
+            }
+            //d3.selectAll("p").style("color", "blue");
+            d3.selectAll("p").style("color", function(d, i) {
+              return i % 2 ? "green" : "red";
+            });
+
+
+
+        </script>
+        <script>
+            var map = L.map('map').setView([49, -120], 7);
+
+            L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+                id: 'examples.map-20v6611k'
+            }).addTo(map);
+        </script>
 
     </body>
 </html>
