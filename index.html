@@ -3,7 +3,14 @@
     <head>
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+        <script src="js/angular-leaflet-directive.min.js"></script>
+
+
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="dist/leaflet.css" />
         <style>
             #map {
               width: 960px;
@@ -11,7 +18,24 @@
             }
         </style>
     </head>
-    <body>
+    <body ng-controller="DemoController">
+        <script>
+            var app = angular.module('demoapp',['leaflet-directive']);
+
+            app.controller('DemoController', [ '$scope', 'leafletData', function($scope, leafletData) {
+                angular.extend($scope, {
+                    center: {
+                        lat: 51.505,
+                        lng: -0.09,
+                        zoom: 5
+                    }
+                })
+            }]);
+        </script>
+
+
+        <leaflet center="center"></leaflet>
+
         <p>First Paragraph!</p>
         <p>Second Paragraph!</p>
         <p>Third Paragraph!</p>
