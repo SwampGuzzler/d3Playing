@@ -20,9 +20,10 @@
     </head>
     <body ng-controller="DemoController">
         <script>
+        console.log("Inside the Angular Controller");
             var app = angular.module('demoapp',['leaflet-directive']);
 
-            app.controller('DemoController', [ '$scope', 'leafletData', function($scope, leafletData) {
+            app.controller('DemoController', [ '$scope',  function($scope) {
                 angular.extend($scope, {
                     center: {
                         lat: 51.505,
@@ -32,8 +33,6 @@
                 })
             }]);
         </script>
-
-
         <leaflet center="center"></leaflet>
 
         <p>First Paragraph!</p>
@@ -53,17 +52,15 @@
               return i % 2 ? "green" : "red";
             });
 
-
-
         </script>
-        <script>
+        <!--<script>
             var map = L.map('map').setView([49, -120], 7);
 
             L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
                 attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
                 id: 'examples.map-20v6611k'
             }).addTo(map);
-        </script>
+        </script>-->
 
     </body>
 </html>
